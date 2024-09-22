@@ -322,8 +322,8 @@ class State:
 
         # dump structs, one file per struct in ./structs/
         for s_name, struct in self.structs.items():
-            safe_name = sanitize_name(s_name)
-            path = pathlib.Path('structs').joinpath(f"{safe_name}.toml")
+            name_hash = hash_name(s_name)
+            path = pathlib.Path('structs').joinpath(f"{name_hash}.toml")
             self._dump_data(dst, path, struct.dumps(fmt=ArtifactFormat.TOML).encode())
 
         if pathlib.Path(self.client.repo_root + '/structs').exists():
