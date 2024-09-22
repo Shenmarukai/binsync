@@ -45,6 +45,12 @@ class ArtifactType:
 # Helper Funcs
 #
 
+def hash_name(unsafe_name: str) -> str:
+    """
+    Hashes a name to a unique identifier.
+    """
+    return str(hash(unsafe_name))
+
 def sanitize_name(unsafe_name: str) -> str:
     """
     C style name sanitization. Replaces all non-alphanumeric characters with underscores.
